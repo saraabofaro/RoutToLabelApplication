@@ -1,0 +1,18 @@
+
+
+CREATE COMPUTE MODULE RoutMessageFlow_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		IF (InputRoot.JSON.Data.customer.paymentType ='NetBanking') THEN
+			SET OutputLocalEnvironment.Destination.RouterList.DestinationData.LabelName = 'Banking';
+		ELSEIF (InputRoot.JSON.Data.customer.paymentType = 'Card') THEN
+			SET OutputLocalEnvironment.Destination.RouterList.DestinationData.LabelName = 'Card';
+		ELSE
+			SET OutputLocalEnvironment.Destination.RouterList.DestinationData.LabelName = 'Unknown';
+		END IF;
+		
+		RETURN TRUE;
+	END;
+
+	
+END MODULE;

@@ -1,0 +1,10 @@
+
+
+CREATE COMPUTE MODULE RoutMessageFlow_Compute1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		set OutputRoot.JSON.Data.status='Net Banking Payment Successed';
+		RETURN TRUE;
+	END;
+
+END MODULE;

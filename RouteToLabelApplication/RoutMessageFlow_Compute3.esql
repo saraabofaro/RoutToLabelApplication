@@ -1,0 +1,10 @@
+
+
+CREATE COMPUTE MODULE RoutMessageFlow_Compute3
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		set OutputRoot.JSON.Data.status='Unkonwn Payment type';
+		RETURN TRUE;
+	END;
+
+END MODULE;
